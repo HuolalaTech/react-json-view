@@ -10,7 +10,7 @@ const data = JSON.stringify([
     name: '@huolala-tech/react-json-view',
     contributor: 'wqcstrong',
     description:
-      'This package only accepts source data of string type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the JSON.parse() method.',
+      'The component accepts source data of string type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the JSON.parse() method.',
   },
 ]);
 

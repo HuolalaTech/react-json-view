@@ -1,8 +1,10 @@
+Engligh | [中文](./README_ZH.md)
+
 ## @huolala-tech/react-json-view
 
 `<ReactJsonView />` is a React component for displaying JSON data.
 
-This package accepts source data of *string* type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method. Otherwise, the data will be converted to a *string* type before being processed.
+The component accepts source data of *string* type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method. Otherwise, the data will be converted to a *string* type before being processed.
 
 ## Install
 
@@ -34,7 +36,7 @@ const data = JSON.stringify([
   {
     name: "@huolala-tech/react-json-view",
     contributor: "wqcstrong",
-    description: 'This package accepts source data of *string* type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method.',
+    description: 'The component accepts source data of *string* type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method.',
   },
 ]);
 
@@ -43,6 +45,7 @@ const App = () => {
     <div id="app">
       <ReactJsonView
         source={data}
+        rootLabel="Response data"
         keyCount={200}
         defaultExpand={false}
         maxTitleSize={100}
