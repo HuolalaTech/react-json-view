@@ -1,4 +1,4 @@
-import JsonNodeView from '../dist/index';
+import ReactJsonView from '../dist/index';
 import '../dist/style.css';
 
 const data = JSON.stringify([
@@ -7,7 +7,7 @@ const data = JSON.stringify([
   'Hello world',
   ['foo', 'bar', 'baz'],
   {
-    name: '@huolala-tech/json-node-view',
+    name: '@huolala-tech/react-json-view',
     contributor: 'wqcstrong',
     description:
       'This package only accepts source data of string type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the JSON.parse() method.',
@@ -17,7 +17,7 @@ const data = JSON.stringify([
 const App = () => {
   return (
     <div id="app">
-      <JsonNodeView
+      <ReactJsonView
         source={data}
         rootLabel="Response data"
         keyCount={200}

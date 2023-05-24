@@ -16,7 +16,7 @@ export interface Options {
    */
   defaultExpand?: boolean;
   /**
-   * `JsonNodeView` support load more property lazily.
+   * `ReactJsonView` support load more property lazily.
    * The option indicated how many properties to show once, you
    * can pass "all" to show all.
    * @default 200
@@ -29,6 +29,6 @@ export interface Options {
   maxTitleSize?: number;
 }
 
-declare const JsonNodeView: import('react').MemoExoticComponent<Options>;
+declare const ReactJsonView: import('react').MemoExoticComponent<Options>;
 
-export default JsonNodeView;
+export default ReactJsonView;

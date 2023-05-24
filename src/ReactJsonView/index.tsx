@@ -9,7 +9,7 @@ const InitJsonNode = () => {
   return <JsonNode label={rootLabel} source={source} />;
 };
 
-const JsonNodeView = memo<Options>((props) => {
+const ReactJsonView = memo<Options>((props) => {
   return (
     <ConfigProvider {...props}>
       <InitJsonNode />
@@ -17,4 +17,4 @@ const JsonNodeView = memo<Options>((props) => {
   );
 });
 
-export default JsonNodeView;
+export default ReactJsonView;

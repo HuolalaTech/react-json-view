@@ -1,6 +1,6 @@
-## @huolala-tech/json-node-view
+## @huolala-tech/react-json-view
 
-`<JsonNodeView />` is a React component for display JSON data.
+`<ReactJsonView />` is a React component for displaying JSON data.
 
 This package accepts source data of *string* type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method. Otherwise, the data will be converted to a *string* type before being processed.
 
@@ -8,13 +8,13 @@ This package accepts source data of *string* type, which means you need to ensur
 
 ```bash
 # Yarn
-yarn add @huolala-tech/json-node-view
+yarn add @huolala-tech/react-json-view
 
 # NPM
-npm install @huolala-tech/json-node-view
+npm install @huolala-tech/react-json-view
 
 # pnpm
-pnpm install @huolala-tech/json-node-view
+pnpm install @huolala-tech/react-json-view
 ```
 
 ## Usage
@@ -23,8 +23,8 @@ pnpm install @huolala-tech/json-node-view
 imoprt React from 'react';
 import ReactDOM from 'react-dom';
 
-import JsonNodeView from '@huolala-tech/json-node-view';
-import '@huolala-tech/json-node-view/dist/style.css';
+import ReactJsonView from '@huolala-tech/react-json-view';
+import '@huolala-tech/react-json-view/dist/style.css';
 
 const data = JSON.stringify([
   1,
@@ -32,7 +32,7 @@ const data = JSON.stringify([
   "Hello world",
   ["foo", "bar", "baz"],
   {
-    name: "@huolala-tech/json-node-view",
+    name: "@huolala-tech/react-json-view",
     contributor: "wqcstrong",
     description: 'This package accepts source data of *string* type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method.',
   },
@@ -41,7 +41,7 @@ const data = JSON.stringify([
 const App = () => {
   return (
     <div id="app">
-      <JsonNodeView
+      <ReactJsonView
         source={data}
         keyCount={200}
         defaultExpand={false}
@@ -68,7 +68,7 @@ Now you should get that after above:
 The default configuration usage:
 
 ```tsx
-<JsonNodeView
+<ReactJsonView
   source={data}
   rootLabel=""
   defaultExpand={false}
@@ -83,7 +83,7 @@ The default configuration usage:
 | `source`        | `string`          | None          | Origin json string.                                          |
 | `rootLabel`     | `React.ReactNode` | `""`          | Root node's label.                                           |
 | `defaultExpand` | `boolean`         | `false`       | Whether expand property panel.                               |
-| `keyCount`      | `number | "all"`  | `200`         | `JsonNodeView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
+| `keyCount`      | `number | "all"`  | `200`         | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
 | `maxTitleSize`  | `number`          | `100`         | The max length of abbreviated title in collapse.             |
 
 

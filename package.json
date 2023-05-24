@@ -1,10 +1,35 @@
 {
-  "name": "@huolala-tech/node-view",
+  "name": "@huolala-tech/react-json-view",
   "version": "0.0.0",
-  "type": "module",
-  "module": "dist/index.js",
+  "description": "A react component for displaying JSON data",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
   "types": "types/index.d.ts",
   "license": "MIT",
+  "author": "Blucas Wu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HuolalaTech/react-json-view"
+  },
+  "bugs": {
+    "url": "https://github.com/HuolalaTech/react-json-view/issues"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "keywords": [
+    "react-json-view",
+    "json-component",
+    "json",
+    "react-json",
+    "json-parse",
+    "json-view",
+    "react-component"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

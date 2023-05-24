@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import { uglify } from 'rollup-plugin-uglify';
 
 const fileNames = {
-  es: 'index.es.js',
-  umd: 'index.umd.js',
+  es: 'index.mjs',
+  cjs: 'index.cjs',
 };
 
 // https://vitejs.dev/config/
@@ -18,9 +18,11 @@ export default defineConfig(({ command }) => {
           external: ['react'],
         },
         lib: {
-          entry: './src/JsonNodeView/index.tsx',
-          formats: ['es'],
-          fileName: 'index',
+          entry: './src/ReactJsonView/index.tsx',
+          formats: ['es', 'cjs'],
+          fileName: (format) => {
+            return fileNames[format];
+          },
         },
       },
     };
