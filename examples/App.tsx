@@ -1,30 +1,61 @@
 import ReactJsonView from '../dist/index';
 import '../dist/style.css';
-import json from './assets/data.json?raw';
+import json from './assets/data.json';
 
-const data = JSON.stringify([
-  1,
-  true,
-  'Hello world',
-  ['foo', 'bar', 'baz'],
+const data = [
   {
-    name: '@huolala-tech/react-json-view',
-    contributor: 'wqcstrong',
-    description:
-      'The component accepts source data of string type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the JSON.parse() method.',
+    type: 'Primitive',
+    data: 'Hello, @huolala-tech/react-json-view',
   },
-]);
+  {
+    type: 'Normal',
+    data: {
+      name: '@huolala-tech/react-json-view',
+      contributor: 'wqcstrong',
+      description:
+        '<ReactJsonView /> is a react component for display json tree, it accepts the valid json object as the source and show them',
+    },
+  },
+  {
+    type: 'Indicate expand depth (3)',
+    data: {
+      foo: {
+        name: 'foo',
+        child: {
+          bar: {
+            name: 'bar',
+            child: {
+              name: 'baz',
+            },
+          },
+        },
+      },
+    },
+  },
+  {
+    type: 'Self-Reference (window)',
+    data: window,
+  },
+  { type: 'Big Size', data: json },
+];
 
 const App = () => {
   return (
     <div id="app">
-      <ReactJsonView
-        source={data || json}
-        rootLabel="Response data"
-        keyCount={200}
-        defaultExpand={false}
-        maxTitleSize={100}
-      />
+      {data.map((item) => {
+        return (
+          <>
+            <h2>{item.type}</h2>
+            <ReactJsonView
+              key={item.type}
+              source={item.data}
+              keyCount={200}
+              defaultExpand={2}
+              maxTitleSize={100}
+            />
+          </>
+        );
+      })}
     </div>
   );
 };

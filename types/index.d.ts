@@ -4,7 +4,7 @@ export interface Options {
   /**
    * origin json data.
    */
-  source: string;
+  source: object;
   /**
    * root label.
    * @default ""
@@ -14,7 +14,7 @@ export interface Options {
    * Whether expand property panel.
    * @default false
    */
-  defaultExpand?: boolean;
+  defaultExpand?: boolean | number;
   /**
    * `ReactJsonView` support load more property lazily.
    * The option indicated how many properties to show once, you

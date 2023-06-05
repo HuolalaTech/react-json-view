@@ -1,25 +1,42 @@
 import { useState, useMemo, ReactNode } from 'react';
-import { clsx, isListOrMap, shortTitle } from '../../utils';
+import {
+  clsx,
+  isBoolean,
+  isListOrMap,
+  isNumber,
+  shortTitle,
+} from '../../utils';
 import { ArrowRight } from './SvgIcon';
 import { useConfigInfo } from './ConfigContext';
 import CopyContent from './CopyContent';
 import LazyLoadMore from './LazyLoadMore';
 
 const JsonNode = ({
-  source = '',
+  source = {},
+  depth = 1,
   label = '',
 }: {
-  source: string;
+  source: object;
+  depth?: number;
   label?: ReactNode;
 }) => {
   const { defaultExpand, maxTitleSize } = useConfigInfo();
-  const [collapsed, setCollapsed] = useState(!defaultExpand);
+  const [expanded, setExpanded] = useState(() => {
+    if (isBoolean(defaultExpand)) {
+      return defaultExpand;
+    }
+    if (isNumber(defaultExpand)) {
+      return defaultExpand + 1 >= depth;
+    }
+    return false;
+  });
 
   let data: unknown;
   try {
-    data = JSON.parse(source);
+    data = JSON.parse(JSON.stringify(source));
   } catch (e) {
-    data = `${source}`;
+    label = 'Error';
+    data = 'The source value must be a valid json object';
   }
 
   const labelContent = useMemo(() => {
@@ -60,28 +77,26 @@ const JsonNode = ({
 
     return (
       <div className="rjv-node">
-        <div
-          className="rjv-node__title"
-          onClick={() => setCollapsed(!collapsed)}
-        >
+        <div className="rjv-node__title" onClick={() => setExpanded(!expanded)}>
           <ArrowRight
             width={10}
             height={10}
             className={clsx('rjv-node__spread-controller', {
-              spread: !collapsed,
+              spread: expanded,
             })}
           />
           {labelContent}
-          {(!label || collapsed) && <code>{title}</code>}
+          {(!label || !expanded) && <code>{title}</code>}
         </div>
-        {!collapsed && (
-          <div className="rjv-node__property">
+        {expanded && (
+          <div className="rjv-node__property" data-depth={depth}>
             <LazyLoadMore
               list={Object.keys(data)}
               render={(key) => (
                 <JsonNode
                   label={key}
-                  source={JSON.stringify((data as any)[key])}
+                  source={(data as any)[key]}
+                  depth={depth + 1}
                 />
               )}
             />

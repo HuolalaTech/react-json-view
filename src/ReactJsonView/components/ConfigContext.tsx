@@ -2,7 +2,7 @@ import { PropsWithChildren, createContext, useContext } from 'react';
 import { Options } from '../../../types';
 
 const ConfigContext = createContext<Options>({
-  source: '',
+  source: {},
   defaultExpand: false,
   rootLabel: '',
   keyCount: 200,

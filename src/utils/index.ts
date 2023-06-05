@@ -109,6 +109,13 @@ export function toStringTag(data: unknown) {
   return Object.prototype.toString.call(data);
 }
 
+export function isBoolean(data: unknown): data is boolean {
+  return typeof data === 'boolean';
+}
+export function isNumber(data: unknown): data is number {
+  return typeof data === 'number';
+}
+
 export function isArray<T = unknown>(data: unknown): data is T[] {
   return Array.isArray(data);
 }

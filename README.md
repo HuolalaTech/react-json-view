@@ -4,8 +4,6 @@ Engligh | [中文](./README_ZH.md)
 
 `<ReactJsonView />` is a React component for displaying JSON data.
 
-The component accepts source data of _string_ type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method. Otherwise, the data will be converted to a _string_ type before being processed.
-
 ## Install
 
 ```bash
@@ -30,17 +28,7 @@ import ReactDOM from 'react-dom';
 import ReactJsonView from '@huolala-tech/react-json-view';
 import '@huolala-tech/react-json-view/dist/style.css';
 
-const data = JSON.stringify([
-  1,
-  true,
-  "Hello world",
-  ["foo", "bar", "baz"],
-  {
-    name: "@huolala-tech/react-json-view",
-    contributor: "wqcstrong",
-    description: 'The component accepts source data of *string* type, which means you need to ensure that the data passed in is valid JSON string and can be parsed without errors using the `JSON.parse()` method.',
-  },
-]);
+const data = [1,2,3,4]
 
 const App = () => {
   return (
@@ -64,10 +52,6 @@ ReactDOM.render(
 )
 ```
 
-Now you should get that after above:
-
-![Main](./screenshots/expand.jpg)
-
 ## Config
 
 The default configuration usage:
@@ -82,13 +66,13 @@ The default configuration usage:
 />
 ```
 
-| Name            | Type              | Default value | Description                                      |
-| --------------- | ----------------- | ------------- | ------------------------------------------------ |
-| `source`        | `string`          | None          | Origin json string.                              |
-| `rootLabel`     | `React.ReactNode` | `""`          | Root node's label.                               |
-| `defaultExpand` | `boolean`         | `false`       | Whether expand property panel.                   |
-| `keyCount`      | `number / "all"`  | `200`         | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
-| `maxTitleSize`  | `number`          | `100`         | The max length of abbreviated title in collapse. |
+| Name            | Type               | Default value | Description                                                  |
+| --------------- | ------------------ | ------------- | ------------------------------------------------------------ |
+| `source`        | `object`           | None          | Origin json data.                                            |
+| `rootLabel`     | `React.ReactNode`  | `""`          | Root node's label.                                           |
+| `defaultExpand` | `boolean / number` | `false`       | Whether expand property panel. Expand at a particular depth if you pass a integer value. |
+| `keyCount`      | `number / "all"`   | `200`         | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
+| `maxTitleSize`  | `number`           | `100`         | The max length of abbreviated title in collapse.             |
 
 ## License
 
