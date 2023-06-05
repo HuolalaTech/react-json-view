@@ -11,7 +11,7 @@ const LazyLoadMore = React.memo(({ list, render }: Props) => {
   const { keyCount } = useConfigInfo();
   const sliceSize = useMemo(() => {
     if (keyCount === 'all') return list.length;
-    if (Number.isFinite(keyCount)) return keyCount;
+    if (keyCount && Number.isInteger(keyCount) && keyCount > 0) return keyCount;
     return 200;
   }, [keyCount, list.length]);
   const [panelExpanded, setPanelExpanded] = useState(false);
