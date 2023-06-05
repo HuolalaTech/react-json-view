@@ -29,6 +29,6 @@ export interface Options {
   maxTitleSize?: number;
 }
 
-declare const ReactJsonView: import('react').MemoExoticComponent<Options>;
+declare const ReactJsonView: import('react').NamedExoticComponent<Options>;
 
 export default ReactJsonView;
