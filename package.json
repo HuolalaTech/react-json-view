@@ -23,7 +23,7 @@
     "json-component",
     "json",
     "react-json",
-    "json-parse",
+    "json-tree",
     "json-view",
     "react-component"
   ],
