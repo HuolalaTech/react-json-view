@@ -1,6 +1,6 @@
 {
   "name": "@huolala-tech/react-json-view",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A react component for displaying JSON data",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
