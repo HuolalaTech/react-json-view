@@ -44,7 +44,7 @@ export const CheckMark = (props: SVGAttributes<Element>) => (
   </svg>
 );
 
-export const CorssMark = (props: SVGAttributes<Element>) => (
+export const CrossMark = (props: SVGAttributes<Element>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"

@@ -49,7 +49,7 @@ const JsonNode = ({
           </>
         )}
         <span className={clsx('rjv-type-node', className)}>
-          <CopyContent content={`${data}`} rows={3} length={150} />
+          <CopyContent content={`${data}`} />
         </span>
       </code>
     );

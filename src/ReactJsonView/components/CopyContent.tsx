@@ -2,12 +2,10 @@ import { Fragment, useCallback, useMemo } from 'react';
 import copy from 'copy-to-clipboard';
 import React from 'react';
 import { cutOffStringLiteral, useSwitchWithDelay } from '../../utils';
-import { CheckMark, CorssMark, TextCopy } from './SvgIcon';
+import { CheckMark, CrossMark, TextCopy } from './SvgIcon';
 
 interface Props {
   content: string;
-  rows?: number;
-  length?: number;
 }
 
 const CopyContent: React.FC<Props> = ({ content }) => {
@@ -36,7 +34,7 @@ const CopyContent: React.FC<Props> = ({ content }) => {
         color = '#52c41a';
         break;
       case -1:
-        Icon = CorssMark;
+        Icon = CrossMark;
         color = '#ff4d4f';
         break;
       default:
