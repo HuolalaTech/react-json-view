@@ -82,12 +82,12 @@ ReactDOM.render(
 />
 ```
 
-| 配置项  | 类型            | 默认值 | 释义                                |
-| --------------- | ----------------- | ------------- | ------------------------------------------------ |
-| `source`        | `string`          | 无默认值       | JSON 数据。                      |
-| `rootLabel`     | `React.ReactNode` | `""`          | 根节点的标题名称                          |
-| `defaultExpand` | `boolean`         | `false`       | 是否展开面板               |
-| `keyCount`      | `number / "all"`        | `200`                                            | `ReactJsonView` 支持延迟加载更多属性。 该参数表示一次显示多少个属性，您可以传递 `"all"` 以显示所有属性。 |
+| 配置项           | 类型               | 默认值        | 释义                    |
+| --------------- | ----------------- | ------------- | ---------------------- |
+| `source`        | `string`          | 无默认值       | JSON 数据。             |
+| `rootLabel`     | `React.ReactNode` | `""`          | 根节点的标题名称          |
+| `defaultExpand` | `boolean`         | `false`       | 是否展开面板             |
+| `keyCount`      | `number / "all"`  | `200`         | `ReactJsonView` 支持延迟加载更多属性。 该参数表示一次显示多少个属性，您可以传递 `"all"` 以显示所有属性。 |
 | `maxTitleSize`  | `number`          | `100`         | 折叠时缩写标题的最大长度。 |
 
 ## License

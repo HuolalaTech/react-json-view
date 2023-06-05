@@ -83,11 +83,11 @@ The default configuration usage:
 ```
 
 | Name            | Type              | Default value | Description                                      |
-| --------------- | ----------------- | ------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| --------------- | ----------------- | ------------- | ------------------------------------------------ |
 | `source`        | `string`          | None          | Origin json string.                              |
 | `rootLabel`     | `React.ReactNode` | `""`          | Root node's label.                               |
 | `defaultExpand` | `boolean`         | `false`       | Whether expand property panel.                   |
-| `keyCount`      | `number           | "all"`        | `200`                                            | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
+| `keyCount`      | `number / "all"`  | `200`         | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
 | `maxTitleSize`  | `number`          | `100`         | The max length of abbreviated title in collapse. |
 
 ## License
