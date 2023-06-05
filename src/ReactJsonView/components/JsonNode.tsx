@@ -26,7 +26,7 @@ const JsonNode = ({
       return defaultExpand;
     }
     if (isNumber(defaultExpand)) {
-      return defaultExpand + 1 >= depth;
+      return defaultExpand >= depth;
     }
     return false;
   });
