@@ -1,5 +1,5 @@
 import { useState, useMemo, ReactNode } from 'react';
-import { clsx, shortTitle } from '../../utils';
+import { clsx, isListOrMap, shortTitle } from '../../utils';
 import { ArrowRight } from './SvgIcon';
 import { useConfigInfo } from './ConfigContext';
 import CopyContent from './CopyContent';
@@ -14,7 +14,8 @@ const JsonNode = ({
 }) => {
   const { defaultExpand, maxTitleSize } = useConfigInfo();
   const [collapsed, setCollapsed] = useState(!defaultExpand);
-  let data: any;
+
+  let data: unknown;
   try {
     data = JSON.parse(source);
   } catch (e) {
@@ -23,7 +24,7 @@ const JsonNode = ({
 
   const labelContent = useMemo(() => {
     if (label) {
-      return <code className="jnv-node__property-key">{label}: </code>;
+      return <code className="rjv-node__property-key">{label}: </code>;
     }
     return null;
   }, [label]);
@@ -47,42 +48,49 @@ const JsonNode = ({
             {labelContent}
           </>
         )}
-        <span className={clsx('jnv-type-node', className)}>
+        <span className={clsx('rjv-type-node', className)}>
           <CopyContent content={`${data}`} rows={3} length={150} />
         </span>
       </code>
     );
   }
 
-  const title = shortTitle(data, maxTitleSize);
-  return (
-    <div className="jnv-node">
-      <div className="jnv-node__title" onClick={() => setCollapsed(!collapsed)}>
-        <ArrowRight
-          width={10}
-          height={10}
-          className={clsx('jnv-node__spread-controller', {
-            spread: !collapsed,
-          })}
-        />
-        {labelContent}
-        {(!label || collapsed) && <code>{title}</code>}
-      </div>
-      {!collapsed && (
-        <div className="jnv-node__property">
-          <LazyLoadMore
-            list={Object.keys(data)}
-            render={(key) => (
-              <JsonNode
-                label={String(key)}
-                source={JSON.stringify(data[key])}
-              />
-            )}
+  if (isListOrMap(data)) {
+    const title = shortTitle(data, maxTitleSize);
+
+    return (
+      <div className="rjv-node">
+        <div
+          className="rjv-node__title"
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <ArrowRight
+            width={10}
+            height={10}
+            className={clsx('rjv-node__spread-controller', {
+              spread: !collapsed,
+            })}
           />
+          {labelContent}
+          {(!label || collapsed) && <code>{title}</code>}
         </div>
-      )}
-    </div>
-  );
+        {!collapsed && (
+          <div className="rjv-node__property">
+            <LazyLoadMore
+              list={Object.keys(data)}
+              render={(key) => (
+                <JsonNode
+                  label={key}
+                  source={JSON.stringify((data as any)[key])}
+                />
+              )}
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
+  return null;
 };
 
 export default JsonNode;

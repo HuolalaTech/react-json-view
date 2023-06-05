@@ -21,6 +21,8 @@ pnpm install @huolala-tech/react-json-view
 
 ## 使用方式
 
+查看 [示例](./examples/)
+
 ```tsx
 imoprt React from 'react';
 import ReactDOM from 'react-dom';

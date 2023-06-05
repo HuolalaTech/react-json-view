@@ -104,3 +104,27 @@ export function useSwitchWithDelay<T>(defaultValue: T, delay = 1500) {
 
   return [currentValue, onSwitchValue] as const;
 }
+
+export function toStringTag(data: unknown) {
+  return Object.prototype.toString.call(data);
+}
+
+export function isArray<T = unknown>(data: unknown): data is T[] {
+  return Array.isArray(data);
+}
+
+export function isObject<T = unknown>(
+  data: unknown,
+): data is Record<string, T> {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    toStringTag(data) === '[object Object]'
+  );
+}
+
+export function isListOrMap<T = unknown>(
+  data: unknown,
+): data is T[] | Record<string, T> {
+  return isArray(data) || isObject(data);
+}

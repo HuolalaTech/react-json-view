@@ -1,5 +1,6 @@
 import ReactJsonView from '../dist/index';
 import '../dist/style.css';
+import json from './assets/data.json?raw';
 
 const data = JSON.stringify([
   1,
@@ -18,7 +19,7 @@ const App = () => {
   return (
     <div id="app">
       <ReactJsonView
-        source={data}
+        source={data || json}
         rootLabel="Response data"
         keyCount={200}
         defaultExpand={false}
