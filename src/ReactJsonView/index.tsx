@@ -3,10 +3,19 @@ import './index.less';
 import { Options } from '../../types';
 import { ConfigProvider, useConfigInfo } from './components/ConfigContext';
 import JsonNode from './components/JsonNode';
+import { isString } from '../utils';
 
 const InitJsonNode = () => {
   const { source, rootLabel } = useConfigInfo();
-  return <JsonNode label={rootLabel} source={source} />;
+  let data: Options['source'] = source;
+  if (isString(source)) {
+    try {
+      data = JSON.parse(source);
+    } catch (e) {
+      //
+    }
+  }
+  return <JsonNode label={rootLabel} source={data} />;
 };
 
 const ReactJsonView = memo<Options>((props) => {

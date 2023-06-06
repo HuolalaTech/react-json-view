@@ -10,13 +10,14 @@ import { ArrowRight } from './SvgIcon';
 import { useConfigInfo } from './ConfigContext';
 import CopyContent from './CopyContent';
 import LazyLoadMore from './LazyLoadMore';
+import { Options } from '../../../types';
 
 const JsonNode = ({
-  source = {},
+  source = null,
   depth = 1,
   label = '',
 }: {
-  source: object;
+  source: Options['source'];
   depth?: number;
   label?: ReactNode;
 }) => {

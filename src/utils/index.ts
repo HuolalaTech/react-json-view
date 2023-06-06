@@ -115,6 +115,9 @@ export function isBoolean(data: unknown): data is boolean {
 export function isNumber(data: unknown): data is number {
   return typeof data === 'number';
 }
+export function isString(data: unknown): data is string {
+  return typeof data === 'string';
+}
 
 export function isArray<T = unknown>(data: unknown): data is T[] {
   return Array.isArray(data);

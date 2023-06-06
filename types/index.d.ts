@@ -4,7 +4,7 @@ export interface Options {
   /**
    * origin json data.
    */
-  source: object;
+  source: string | object | null;
   /**
    * root label.
    * @default ""

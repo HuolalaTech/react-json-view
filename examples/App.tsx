@@ -4,17 +4,30 @@ import json from './assets/data.json';
 
 const data = [
   {
-    type: 'Primitive',
+    type: 'Primitive source',
     data: 'Hello, @huolala-tech/react-json-view',
   },
   {
-    type: 'Normal',
+    type: 'Normal object source',
     data: {
       name: '@huolala-tech/react-json-view',
       contributor: 'wqcstrong',
       description:
         '<ReactJsonView /> is a react component for display json tree, it accepts the valid json object as the source and show them',
     },
+  },
+  {
+    type: 'JSON string',
+    data: JSON.stringify({
+      name: '@huolala-tech/react-json-view',
+      contributor: 'wqcstrong',
+      description:
+        '<ReactJsonView /> is a react component for display json tree, it accepts the valid json object as the source and show them',
+    }),
+  },
+  {
+    type: 'Null source',
+    data: null,
   },
   {
     type: 'Wrap line',
