@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { uglify } from 'rollup-plugin-uglify';
 
 const fileNames = {
   es: 'index.mjs',
@@ -8,9 +7,9 @@ const fileNames = {
 };
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
-  const isBuild = command === 'build';
-  if (isBuild) {
+export default defineConfig(({ mode }) => {
+  const isPkg = mode === 'pkg';
+  if (isPkg) {
     return {
       build: {
         minify: false,
@@ -29,5 +28,8 @@ export default defineConfig(({ command }) => {
   }
   return {
     plugins: [react()],
+    build: {
+      outDir: 'docs-dist'
+    }
   };
 });

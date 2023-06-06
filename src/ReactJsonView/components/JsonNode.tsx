@@ -37,7 +37,7 @@ const JsonNode = ({
     data = JSON.parse(JSON.stringify(source));
   } catch (e) {
     label = 'Error';
-    data = 'The source value must be a valid json object';
+    data = 'The source value must be serializable.';
   }
 
   const labelContent = useMemo(() => {

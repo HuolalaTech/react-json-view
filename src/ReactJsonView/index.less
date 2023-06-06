@@ -1,10 +1,13 @@
 @fontSize: 14px;
+@fontFamily: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+  monospace;
 
 .rjv-node {
   font-size: @fontSize;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
-    monospace;
   line-height: 1.4;
+  code {
+    font-family: @fontFamily;
+  }
   &__title {
     cursor: default;
   }
@@ -19,6 +22,8 @@
   &__property {
     margin-left: 12px;
     &-key {
+      font-size: @fontSize;
+      font-family: @fontFamily;
       color: #731e72;
     }
   }
@@ -35,6 +40,7 @@
 }
 .rjv-type-node {
   font-size: @fontSize;
+  font-family: @fontFamily;
   &.number {
     color: #181997;
   }
