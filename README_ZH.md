@@ -2,7 +2,7 @@
 
 ## @huolala-tech/react-json-view
 
-`<ReactJsonView />` 是一个用于展示 JSON 数据的 React 组件。
+`<ReactJsonView />` 是一个用于展示可序列化数据的 React 组件。
 
 ## 安装
 
@@ -68,7 +68,7 @@ ReactDOM.render(
 
 | 配置项           | 类型               | 默认值        | 释义                    |
 | --------------- | ----------------- | ------------- | ---------------------- |
-| `source`        | `string`          | 无默认值       | JSON 数据。             |
+| `source`        | `string`          | 无默认值       | 可序列化的数据。             |
 | `rootLabel`     | `React.ReactNode` | `""`          | 根节点的标题名称          |
 | `defaultExpand` | `boolean / number` | `false`       | 是否展开面板。传入整数时是指定展开的层级。 |
 | `keyCount`      | `number / "all"`  | `200`         | `ReactJsonView` 支持延迟加载更多属性。 该参数表示一次显示多少个属性，您可以传递 `"all"` 以显示所有属性。 |

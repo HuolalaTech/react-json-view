@@ -2,7 +2,7 @@ Engligh | [中文](./README_ZH.md)
 
 ## @huolala-tech/react-json-view
 
-`<ReactJsonView />` is a React component for displaying JSON data.
+`<ReactJsonView />` is a React component for displaying serializable data.
 
 ## Install
 
@@ -68,7 +68,7 @@ The default configuration usage:
 
 | Name            | Type               | Default value | Description                                                  |
 | --------------- | ------------------ | ------------- | ------------------------------------------------------------ |
-| `source`        | `object`           | None          | Origin json data.                                            |
+| `source`        | `object`           | None          | Origin serializable data.                                            |
 | `rootLabel`     | `React.ReactNode`  | `""`          | Root node's label.                                           |
 | `defaultExpand` | `boolean / number` | `false`       | Whether expand property panel. Expand at a particular depth if you pass a integer value. |
 | `keyCount`      | `number / "all"`   | `200`         | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
