@@ -32,8 +32,9 @@
   },
   "scripts": {
     "dev": "vite --mode doc",
-    "build:doc": "vite build --mode doc",
     "build:pkg": "vite build --mode pkg",
+    "prebuild:doc": "yarn run build:pkg",
+    "build:doc": "vite build --mode doc",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

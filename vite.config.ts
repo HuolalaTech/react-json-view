@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => {
   }
   return {
     plugins: [react()],
+    base: '/react-json-view',
     build: {
       outDir: 'docs-dist'
     }
