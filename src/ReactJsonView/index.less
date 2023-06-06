@@ -47,12 +47,14 @@
     &::after {
       content: '"';
     }
-    .copyable-icon {
-      position: absolute;
-      right: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
+    .copyable {
+      &-icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: translate(15px, 4px);
+        cursor: pointer;
+      }
     }
   }
   &.boolean {
