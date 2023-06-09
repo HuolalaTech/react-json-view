@@ -1,4 +1,4 @@
-Engligh | [中文](./README_ZH.md)
+Engligh | [中文](./README_CN.md)
 
 ## @huolala-tech/react-json-view
 
@@ -35,6 +35,7 @@ const App = () => {
     <div id="app">
       <ReactJsonView
         source={data}
+        darkMode={false}
         rootLabel="Response data"
         keyCount={200}
         defaultExpand={false}
@@ -59,6 +60,7 @@ The default configuration usage:
 ```tsx
 <ReactJsonView
   source={data}
+  darkMode={false}
   rootLabel=""
   defaultExpand={false}
   keyCount={200}
@@ -68,7 +70,8 @@ The default configuration usage:
 
 | Name            | Type               | Default value | Description                                                  |
 | --------------- | ------------------ | ------------- | ------------------------------------------------------------ |
-| `source`        | `object`           | None          | Origin serializable data.                                            |
+| `source`        | `object`           | None          | Origin serializable data.                                    |
+| `darkMode`      | `boolean`          | `false`       | Indicate whether enable dark mode.                           |
 | `rootLabel`     | `React.ReactNode`  | `""`          | Root node's label.                                           |
 | `defaultExpand` | `boolean / number` | `false`       | Whether expand property panel. Expand at a particular depth if you pass a integer value. |
 | `keyCount`      | `number / "all"`   | `200`         | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |

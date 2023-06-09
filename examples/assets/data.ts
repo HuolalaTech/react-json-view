@@ -3,7 +3,6 @@ import json from './big-size.json';
 export const data = [
   {
     type: 'Primitive source',
-
     getData: () => {
       const originSource = 'Hello, @huolala-tech/react-json-view';
       return {
@@ -14,13 +13,15 @@ export const data = [
   },
   {
     type: 'Normal object source',
-
     getData: () => {
       const originSource = {
         name: '@huolala-tech/react-json-view',
         contributor: 'wqcstrong',
+        public: true,
+        dependencyCount: 1,
+        preferGlobal: null,
         description:
-          '<ReactJsonView /> is a react component for display json tree, it accepts the valid json object as the source and show them',
+          '<ReactJsonView /> is a react component for display serializable tree',
       };
       return {
         originSource: JSON.stringify(originSource),
@@ -30,13 +31,15 @@ export const data = [
   },
   {
     type: 'JSON string',
-
     getData: () => {
       const originSource = JSON.stringify({
         name: '@huolala-tech/react-json-view',
         contributor: 'wqcstrong',
+        public: true,
+        dependencyCount: 1,
+        preferGlobal: null,
         description:
-          '<ReactJsonView /> is a react component for display json tree, it accepts the valid json object as the source and show them',
+          '<ReactJsonView /> is a react component for display serializable tree',
       });
       return {
         originSource,
@@ -46,7 +49,6 @@ export const data = [
   },
   {
     type: 'Null',
-
     getData: () => {
       const originSource = null;
       return {
@@ -57,7 +59,6 @@ export const data = [
   },
   {
     type: 'Wrap line',
-
     getData: () => {
       const originSource = `<!DOCTYPE html>
       <html lang="en">
@@ -77,7 +78,6 @@ export const data = [
   },
   {
     type: 'Indicate expand depth (3)',
-
     props: {
       defaultExpand: 3,
     },
@@ -101,7 +101,6 @@ export const data = [
   },
   {
     type: 'Circular-Structure (window)',
-
     getData: () => {
       return {
         originSource: 'window',
@@ -110,8 +109,7 @@ export const data = [
     },
   },
   {
-    type: 'Big size source (4.7MB)',
-
+    type: 'Lazy load big size source (12 MB)',
     getData: () => {
       return {
         originSource: '<Big Size JSON>',

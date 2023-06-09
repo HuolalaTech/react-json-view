@@ -2,9 +2,14 @@ import React from 'react';
 
 export interface Options {
   /**
-   * origin json data.
+   * Origin serializable data.
    */
   source: string | object | null;
+  /**
+   * Whether enable dark mode.
+   * @default false
+   */
+  darkMode?: boolean;
   /**
    * root label.
    * @default ""

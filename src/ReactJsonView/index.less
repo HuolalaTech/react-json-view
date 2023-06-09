@@ -24,11 +24,11 @@
     &-key {
       font-size: @fontSize;
       font-family: @fontFamily;
-      color: #731e72;
+      color: #7d237c;
     }
   }
   .rjv-load-more {
-    color: #8f198d;
+    color: #7d237c;
     font-size: 13px;
     > span {
       cursor: pointer;
@@ -41,7 +41,8 @@
 .rjv-type-node {
   font-size: @fontSize;
   font-family: @fontFamily;
-  &.number {
+  &.number,
+  &.boolean {
     color: #181997;
   }
   &.string {
@@ -58,13 +59,10 @@
         position: absolute;
         right: 0;
         bottom: 0;
-        transform: translate(15px, 4px);
+        transform: translate(17px, 4px);
         cursor: pointer;
       }
     }
-  }
-  &.boolean {
-    color: #181997;
   }
   &.symbol {
     color: #be3c31;
@@ -75,5 +73,29 @@
   &.null,
   &.undefined {
     color: #767b7f;
+  }
+}
+
+[data-dark-mode='true'] {
+  .rjv-node__property-key,
+  .rjv-load-more {
+    color: #70afd3;
+  }
+  .rjv-type-node {
+    &.number,
+    &.boolean {
+      color: #9384f7;
+    }
+    &.string,
+    &.symbol {
+      color: #69d1c7;
+    }
+    &.function {
+      color: #e69a6f;
+    }
+    &.null,
+    &.undefined {
+      color: #7f8488;
+    }
   }
 }

@@ -35,6 +35,7 @@ const App = () => {
     <div id="app">
       <ReactJsonView
         source={data}
+        darkMode={false}
         rootLabel="Response data"
         keyCount={200}
         defaultExpand={false}
@@ -59,6 +60,7 @@ ReactDOM.render(
 ```tsx
 <ReactJsonView
   source={data}
+  darkMode={false}
   rootLabel=""
   defaultExpand={false}
   keyCount={200}
@@ -69,6 +71,7 @@ ReactDOM.render(
 | 配置项           | 类型               | 默认值        | 释义                    |
 | --------------- | ----------------- | ------------- | ---------------------- |
 | `source`        | `string`          | 无默认值       | 可序列化的数据。             |
+| `darkMode` | `boolean` | `false` | 是否启用暗色模式 |
 | `rootLabel`     | `React.ReactNode` | `""`          | 根节点的标题名称          |
 | `defaultExpand` | `boolean / number` | `false`       | 是否展开面板。传入整数时是指定展开的层级。 |
 | `keyCount`      | `number / "all"`  | `200`         | `ReactJsonView` 支持延迟加载更多属性。 该参数表示一次显示多少个属性，您可以传递 `"all"` 以显示所有属性。 |

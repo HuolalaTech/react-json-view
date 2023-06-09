@@ -6,7 +6,7 @@ import JsonNode from './components/JsonNode';
 import { isString } from '../utils';
 
 const InitJsonNode = () => {
-  const { source, rootLabel } = useConfigInfo();
+  const { source, darkMode, rootLabel } = useConfigInfo();
   let data: Options['source'] = source;
   if (isString(source)) {
     try {
@@ -15,7 +15,11 @@ const InitJsonNode = () => {
       //
     }
   }
-  return <JsonNode label={rootLabel} source={data} />;
+  return (
+    <div data-dark-mode={darkMode}>
+      <JsonNode label={rootLabel} source={data} />
+    </div>
+  );
 };
 
 const ReactJsonView = memo<Options>((props) => {

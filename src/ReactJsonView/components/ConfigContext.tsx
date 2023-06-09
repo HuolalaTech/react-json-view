@@ -3,6 +3,7 @@ import { Options } from '../../../types';
 
 const ConfigContext = createContext<Options>({
   source: null,
+  darkMode: false,
   defaultExpand: false,
   rootLabel: '',
   keyCount: 200,
