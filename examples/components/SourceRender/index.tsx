@@ -10,14 +10,8 @@ const ExchangeIcon = (props: React.SVGAttributes<Element>) => {
       viewBox="0 0 24 24"
       {...props}
     >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M7 10h14l-4-4m0 8H3l4 4"
-      />
+      <path fill="currentColor" d="M15.5 5H11l5 7l-5 7h4.5l5-7z" />
+      <path fill="currentColor" d="M8.5 5H4l5 7l-5 7h4.5l5-7z" />
     </svg>
   );
 };
@@ -50,7 +44,7 @@ export const SourceRender = ({
   darkMode,
   originSource,
   renderSource,
-  rjvProps,
+  rjvProps
 }: Props) => {
   return (
     <div className="flex justify-evenly">

@@ -58,7 +58,7 @@ export function shortTitle(data: any, max = 100) {
       if (typeof curVal === 'string') {
         curVal = cutOffStringLiteral(curVal);
       }
-      const curStr = `${key}: ${JSON.stringify(curVal)}`;
+      const curStr = `"${key}": ${JSON.stringify(curVal)}`;
       const result = `${content}${curStr}, `;
       if (result.length > max) {
         hasEllipsis = true;

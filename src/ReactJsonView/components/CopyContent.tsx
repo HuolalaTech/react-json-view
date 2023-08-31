@@ -1,29 +1,29 @@
-import { Fragment, useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import copy from 'copy-to-clipboard';
-import React from 'react';
-import { cutOffStringLiteral, useSwitchWithDelay } from '../../utils';
+import React, { MouseEvent } from 'react';
+import { useSwitchWithDelay } from '../../utils';
 import { CheckMark, CrossMark, TextCopy } from './SvgIcon';
 
 interface Props {
-  content: string;
+  data: string;
 }
 
-const CopyContent: React.FC<Props> = ({ content }) => {
+const Copyable: React.FC<Props> = ({ data }) => {
   const [state, switchState] = useSwitchWithDelay(0);
-  const computedContent = useMemo(() => {
-    if (typeof content !== 'string') return content;
-    return cutOffStringLiteral(content);
-  }, [content]);
 
-  const onCopy = useCallback(() => {
-    if (state !== 0) return;
-    const copyResult = copy(`${content}`);
-    if (copyResult) {
-      switchState(1);
-    } else {
-      switchState(-1);
-    }
-  }, [content, state, switchState]);
+  const onCopy = useCallback(
+    (e: MouseEvent<HTMLSpanElement>) => {
+      e.stopPropagation();
+      if (state !== 0) return;
+      const copyResult = copy(`${data}`);
+      if (copyResult) {
+        switchState(1);
+      } else {
+        switchState(-1);
+      }
+    },
+    [data, state, switchState]
+  );
 
   const icon = useMemo(() => {
     let Icon = TextCopy;
@@ -43,17 +43,13 @@ const CopyContent: React.FC<Props> = ({ content }) => {
     return <Icon width={14} height={14} color={color} />;
   }, [state]);
 
-  if (computedContent === content)
-    return React.createElement(Fragment, null, content);
-
   return (
-    <span className="copyable">
-      <span className="copyable-content">{computedContent}</span>
-      <span className="copyable-icon" onClick={onCopy}>
+    <span className="rjv-copyable">
+      <span className="rjv-copyable-icon" onClick={onCopy}>
         {icon}
       </span>
     </span>
   );
 };
 
-export default CopyContent;
+export default Copyable;

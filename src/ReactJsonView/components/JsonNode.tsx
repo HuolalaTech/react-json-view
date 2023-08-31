@@ -1,21 +1,32 @@
-import { useState, useMemo, ReactNode } from 'react';
+import { useState, useMemo, ReactNode, Fragment } from 'react';
 import {
   clsx,
+  cutOffStringLiteral,
   isBoolean,
   isListOrMap,
   isNumber,
-  shortTitle,
+  shortTitle
 } from '../../utils';
 import { ArrowRight } from './SvgIcon';
 import { useConfigInfo } from './ConfigContext';
-import CopyContent from './CopyContent';
 import LazyLoadMore from './LazyLoadMore';
 import { Options } from '../../../types';
+import React from 'react';
+import Copyable from './CopyContent';
+
+const PrimitiveContent = ({ content }: { content: React.ReactNode }) => {
+  const computedContent = useMemo(() => {
+    if (typeof content !== 'string') return content;
+    return cutOffStringLiteral(content);
+  }, [content]);
+
+  return React.createElement(Fragment, null, computedContent);
+};
 
 const JsonNode = ({
   source = null,
   depth = 1,
-  label = '',
+  label = ''
 }: {
   source: Options['source'];
   depth?: number;
@@ -49,7 +60,7 @@ const JsonNode = ({
 
   let className = '';
   const type = typeof data;
-  const primitiveType = ['string', 'number', 'symbol', 'boolean', 'undefined'];
+  const primitiveType = ['string', 'number', 'boolean'];
   if (primitiveType.indexOf(type) > -1) {
     className = type;
   } else if (data === null) {
@@ -57,7 +68,7 @@ const JsonNode = ({
   }
   if (className) {
     return (
-      <code>
+      <code className="rjv-primitive">
         {labelContent && (
           <>
             <span style={{ opacity: 0 }}>
@@ -66,9 +77,10 @@ const JsonNode = ({
             {labelContent}
           </>
         )}
-        <span className={clsx('rjv-type-node', className)}>
-          <CopyContent content={`${data}`} />
+        <span className={clsx('rjv-primitive-type', className)}>
+          <PrimitiveContent content={`${data}`} />
         </span>
+        <Copyable data={JSON.stringify(data, null, 2)} />
       </code>
     );
   }
@@ -77,20 +89,27 @@ const JsonNode = ({
     const title = shortTitle(data, maxTitleSize);
 
     return (
-      <div className="rjv-node">
-        <div className="rjv-node__title" onClick={() => setExpanded(!expanded)}>
+      <div className="rjv-ref">
+        <div
+          className="rjv-ref-title"
+          onClick={() => setExpanded(!expanded)}
+          data-depth={depth - 1}
+        >
           <ArrowRight
             width={10}
             height={10}
-            className={clsx('rjv-node__spread-controller', {
-              spread: expanded,
+            className={clsx('rjv-ref-arrow', {
+              spread: expanded
             })}
           />
           {labelContent}
-          {(!label || !expanded) && <code>{title}</code>}
+          {(!label || !expanded) && (
+            <code className="rjv-node__property-value">{title}</code>
+          )}
+          <Copyable data={JSON.stringify(data, null, 2)} />
         </div>
         {expanded && (
-          <div className="rjv-node__property" data-depth={depth}>
+          <div className="rjv-ref-property">
             <LazyLoadMore
               list={Object.keys(data)}
               render={(key) => (

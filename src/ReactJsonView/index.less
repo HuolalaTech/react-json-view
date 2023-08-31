@@ -2,16 +2,18 @@
 @fontFamily: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
   monospace;
 
-.rjv-node {
-  font-size: @fontSize;
-  line-height: 1.4;
+.rjv-ref {
   code {
     font-family: @fontFamily;
   }
-  &__title {
+  &-node {
+    font-size: @fontSize;
+    line-height: 1.4;
+  }
+  &-title {
     cursor: default;
   }
-  &__spread-controller {
+  &-arrow {
     transform: rotateZ(0);
     transform-origin: 35% center;
     transition: transform linear 0.1s;
@@ -19,26 +21,11 @@
       transform: rotateZ(90deg);
     }
   }
-  &__property {
+  &-property {
     margin-left: 12px;
-    &-key {
-      font-size: @fontSize;
-      font-family: @fontFamily;
-      color: #7d237c;
-    }
-  }
-  .rjv-load-more {
-    color: #7d237c;
-    font-size: 13px;
-    > span {
-      cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 }
-.rjv-type-node {
+.rjv-primitive-type {
   font-size: @fontSize;
   font-family: @fontFamily;
   &.number,
@@ -54,15 +41,6 @@
     &::after {
       content: '"';
     }
-    .copyable {
-      &-icon {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        transform: translate(17px, 4px);
-        cursor: pointer;
-      }
-    }
   }
   &.symbol {
     color: #be3c31;
@@ -76,12 +54,47 @@
   }
 }
 
+.rjv-node__property-key {
+  font-size: @fontSize;
+  font-family: @fontFamily;
+  color: #7d237c;
+}
+
+.rjv-load-more {
+  color: #7d237c;
+  font-size: 13px;
+  > span {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.rjv-copyable {
+  display: inline-block;
+  margin-left: 4px;
+  cursor: pointer;
+  visibility: hidden;
+  transform: translateY(2px);
+}
+
+
+.rjv-primitive,
+.rjv-ref-title {
+  &:hover {
+    .rjv-copyable {
+      visibility: visible;
+    }
+  }
+}
+
 [data-dark-mode='true'] {
   .rjv-node__property-key,
   .rjv-load-more {
     color: #70afd3;
   }
-  .rjv-type-node {
+  .rjv-primitive-type {
     &.number,
     &.boolean {
       color: #9384f7;
