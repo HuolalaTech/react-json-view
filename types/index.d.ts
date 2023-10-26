@@ -22,8 +22,8 @@ export interface Options {
   defaultExpand?: boolean | number;
   /**
    * `ReactJsonView` support load more property lazily.
-   * The option indicated how many properties to show once, you
-   * can pass "all" to show all.
+   * The option indicated how many properties to show one time, you
+   * can pass "all" to expand all.
    * @default 200
    */
   keyCount?: number | 'all';
@@ -32,6 +32,16 @@ export interface Options {
    * @default 100
    */
   maxTitleSize?: number;
+  /**
+   * Whether copyable.
+   * @default true
+   */
+  copyable?: boolean;
+  /**
+   * Whether expandable.
+   * @default true
+   */
+  expandable?: boolean;
 }
 
 declare const ReactJsonView: import('react').NamedExoticComponent<Options>;

@@ -1,21 +1,27 @@
 import { PropsWithChildren, createContext, useContext } from 'react';
 import { Options } from '../../../types';
 
-const ConfigContext = createContext<Options>({
+const defaultValue: Options = {
   source: null,
   darkMode: false,
   defaultExpand: false,
   rootLabel: '',
   keyCount: 200,
   maxTitleSize: 100,
-});
+  copyable: true,
+  expandable: true
+};
+
+const ConfigContext = createContext(defaultValue);
 
 export const ConfigProvider = ({
   children,
   ...props
 }: PropsWithChildren<Options>) => {
   return (
-    <ConfigContext.Provider value={props}>{children}</ConfigContext.Provider>
+    <ConfigContext.Provider value={{ ...defaultValue, ...props }}>
+      {children}
+    </ConfigContext.Provider>
   );
 };
 

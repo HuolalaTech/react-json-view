@@ -65,6 +65,8 @@ The default configuration usage:
   defaultExpand={false}
   keyCount={200}
   maxTitleSize={100}
+  copyable={true}
+  expandable={true}
 />
 ```
 
@@ -76,6 +78,8 @@ The default configuration usage:
 | `defaultExpand` | `boolean / number` | `false`       | Whether expand property panel. Expand at a particular depth if you pass a integer value. |
 | `keyCount`      | `number / "all"`   | `200`         | `ReactJsonView` supports lazily loading more properties. The parameter indicates how many properties to show at a time, and you can pass `"all"` to show all properties. |
 | `maxTitleSize`  | `number`           | `100`         | The max length of abbreviated title in collapse.             |
+| `copyable`      | `boolean`          | `true`        | Indicate whether enable copy function.                       |
+| `expandable`    | `boolean`          | `true`        | Indicate whether enable expand function.                     |
 
 ## License
 

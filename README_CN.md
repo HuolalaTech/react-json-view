@@ -65,6 +65,8 @@ ReactDOM.render(
   defaultExpand={false}
   keyCount={200}
   maxTitleSize={100}
+  copyable={true}
+  expandable={true}
 />
 ```
 
@@ -76,6 +78,8 @@ ReactDOM.render(
 | `defaultExpand` | `boolean / number` | `false`       | 是否展开面板。传入整数时是指定展开的层级。 |
 | `keyCount`      | `number / "all"`  | `200`         | `ReactJsonView` 支持延迟加载更多属性。 该参数表示一次显示多少个属性，您可以传递 `"all"` 以显示所有属性。 |
 | `maxTitleSize`  | `number`          | `100`         | 折叠时缩写标题的最大长度。 |
+| `copyable`      | `boolean`          | `true`        | 是否展示复制功能                       |
+| `expandable`    | `boolean`          | `true`        | 是否支持展开功能                       |
 
 ## License
 

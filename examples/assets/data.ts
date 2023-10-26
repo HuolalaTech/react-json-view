@@ -7,9 +7,9 @@ export const data = [
       const originSource = 'Hello, @huolala-tech/react-json-view';
       return {
         originSource,
-        renderSource: originSource,
+        renderSource: originSource
       };
-    },
+    }
   },
   {
     type: 'Normal object source',
@@ -21,13 +21,13 @@ export const data = [
         dependencyCount: 1,
         preferGlobal: null,
         description:
-          '<ReactJsonView /> is a react component for display serializable tree',
+          '<ReactJsonView /> is a react component for display serializable tree'
       };
       return {
         originSource: JSON.stringify(originSource),
-        renderSource: originSource,
+        renderSource: originSource
       };
-    },
+    }
   },
   {
     type: 'JSON string',
@@ -39,13 +39,13 @@ export const data = [
         dependencyCount: 1,
         preferGlobal: null,
         description:
-          '<ReactJsonView /> is a react component for display serializable tree',
+          '<ReactJsonView /> is a react component for display serializable tree'
       });
       return {
         originSource,
-        renderSource: originSource,
+        renderSource: originSource
       };
-    },
+    }
   },
   {
     type: 'Null',
@@ -53,9 +53,9 @@ export const data = [
       const originSource = null;
       return {
         originSource: JSON.stringify(originSource),
-        renderSource: originSource,
+        renderSource: originSource
       };
-    },
+    }
   },
   {
     type: 'Wrap line',
@@ -72,14 +72,14 @@ export const data = [
       </html>`;
       return {
         originSource,
-        renderSource: originSource,
+        renderSource: originSource
       };
-    },
+    }
   },
   {
     type: 'Indicate expand depth (3)',
     props: {
-      defaultExpand: 3,
+      defaultExpand: 3
     },
     getData: () => {
       const originSource = {
@@ -87,34 +87,58 @@ export const data = [
           22222222: {
             3333333: {
               4444444: {
-                5555555: 'STOP',
-              },
-            },
-          },
-        },
+                5555555: 'STOP'
+              }
+            }
+          }
+        }
       };
       return {
         originSource: JSON.stringify(originSource),
-        renderSource: originSource,
+        renderSource: originSource
       };
-    },
+    }
   },
   {
     type: 'Circular-Structure (window)',
     getData: () => {
       return {
         originSource: 'window',
-        renderSource: window,
+        renderSource: window
       };
-    },
+    }
   },
   {
     type: 'Lazy load big size source (12 MB)',
     getData: () => {
       return {
         originSource: '<Big Size JSON>',
-        renderSource: json,
+        renderSource: json
       };
-    },
+    }
   },
+  {
+    type: 'Disable copy and disable expand',
+    props: {
+      copyable: false,
+      expandable: false
+    },
+    getData: () => {
+      const originSource = {
+        11111111: {
+          22222222: {
+            3333333: {
+              4444444: {
+                5555555: 'STOP'
+              }
+            }
+          }
+        }
+      };
+      return {
+        originSource: JSON.stringify(originSource),
+        renderSource: originSource
+      };
+    }
+  }
 ];

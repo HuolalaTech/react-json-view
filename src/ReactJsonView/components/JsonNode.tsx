@@ -32,8 +32,11 @@ const JsonNode = ({
   depth?: number;
   label?: ReactNode;
 }) => {
-  const { defaultExpand, maxTitleSize } = useConfigInfo();
+  const { defaultExpand, maxTitleSize, copyable, expandable } = useConfigInfo();
+  console.log({ copyable, expandable });
+
   const [expanded, setExpanded] = useState(() => {
+    if (!expandable) return false;
     if (isBoolean(defaultExpand)) {
       return defaultExpand;
     }
@@ -80,7 +83,7 @@ const JsonNode = ({
         <span className={clsx('rjv-primitive-type', className)}>
           <PrimitiveContent content={`${data}`} />
         </span>
-        <Copyable data={JSON.stringify(data, null, 2)} />
+        {copyable && <Copyable data={JSON.stringify(data, null, 2)} />}
       </code>
     );
   }
@@ -92,21 +95,27 @@ const JsonNode = ({
       <div className="rjv-ref">
         <div
           className="rjv-ref-title"
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => {
+            if (expandable) {
+              setExpanded(!expanded);
+            }
+          }}
           data-depth={depth - 1}
         >
-          <ArrowRight
-            width={10}
-            height={10}
-            className={clsx('rjv-ref-arrow', {
-              spread: expanded
-            })}
-          />
+          {expandable && (
+            <ArrowRight
+              width={10}
+              height={10}
+              className={clsx('rjv-ref-arrow', {
+                spread: expanded
+              })}
+            />
+          )}
           {labelContent}
           {(!label || !expanded) && (
             <code className="rjv-node__property-value">{title}</code>
           )}
-          <Copyable data={JSON.stringify(data, null, 2)} />
+          {copyable && <Copyable data={JSON.stringify(data, null, 2)} />}
         </div>
         {expanded && (
           <div className="rjv-ref-property">
