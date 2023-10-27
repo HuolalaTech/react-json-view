@@ -36,7 +36,8 @@
     "prebuild:doc": "yarn run build:pkg",
     "build:doc": "vite build --mode doc",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "yarn build:pkg"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
