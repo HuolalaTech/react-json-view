@@ -33,7 +33,6 @@ const JsonNode = ({
   label?: ReactNode;
 }) => {
   const { defaultExpand, maxTitleSize, copyable, expandable } = useConfigInfo();
-  console.log({ copyable, expandable });
 
   const [expanded, setExpanded] = useState(() => {
     if (!expandable) return false;
