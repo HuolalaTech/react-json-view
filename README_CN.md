@@ -80,6 +80,7 @@ ReactDOM.render(
 | `maxTitleSize`  | `number`          | `100`         | 折叠时缩写标题的最大长度。 |
 | `copyable`      | `boolean`          | `true`        | 是否展示复制功能                       |
 | `expandable`    | `boolean`          | `true`        | 是否支持展开功能                       |
+| `stringEllipse` | `boolean` | `true` | 当字符串长度超过 100 时会对文字裁剪、显示省略号，如果传入 `false` 显示全部文字。 |
 
 ## License
 

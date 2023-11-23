@@ -80,6 +80,7 @@ The default configuration usage:
 | `maxTitleSize`  | `number`           | `100`         | The max length of abbreviated title in collapse.             |
 | `copyable`      | `boolean`          | `true`        | Indicate whether enable copy function.                       |
 | `expandable`    | `boolean`          | `true`        | Indicate whether enable expand function.                     |
+| `stringEllipse` | `boolean`          | `true`        | Ellipse if the string type value's length is more than 100 or show all text when you pass false. |
 
 ## License
 

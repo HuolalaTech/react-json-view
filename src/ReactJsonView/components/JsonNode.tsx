@@ -15,10 +15,12 @@ import React from 'react';
 import Copyable from './CopyContent';
 
 const PrimitiveContent = ({ content }: { content: React.ReactNode }) => {
+  const { stringEllipse } = useConfigInfo();
   const computedContent = useMemo(() => {
     if (typeof content !== 'string') return content;
-    return cutOffStringLiteral(content);
-  }, [content]);
+    if (stringEllipse) return cutOffStringLiteral(content);
+    return content;
+  }, [content, stringEllipse]);
 
   return React.createElement(Fragment, null, computedContent);
 };

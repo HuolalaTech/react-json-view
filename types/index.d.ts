@@ -42,6 +42,12 @@ export interface Options {
    * @default true
    */
   expandable?: boolean;
+  /**
+   * Ellipse if the string type value's length is more than 100
+   * or show all text when you pass false.
+   * @default true
+   */
+  stringEllipse?: boolean;
 }
 
 declare const ReactJsonView: import('react').NamedExoticComponent<Options>;

@@ -9,7 +9,8 @@ const defaultValue: Options = {
   keyCount: 200,
   maxTitleSize: 100,
   copyable: true,
-  expandable: true
+  expandable: true,
+  stringEllipse: true
 };
 
 const ConfigContext = createContext(defaultValue);

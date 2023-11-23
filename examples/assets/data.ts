@@ -58,7 +58,29 @@ export const data = [
     }
   },
   {
-    type: 'Wrap line',
+    type: 'Ellipse string',
+    getData: () => {
+      const originSource = `<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <script type="module" src="/@vite/client"></script>
+        <meta charset="UTF-8" />
+      <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.ts?t=1686017220566"></script>
+      </body>
+      </html>`;
+      return {
+        originSource,
+        renderSource: originSource
+      };
+    }
+  },
+  {
+    type: 'Show all text',
+    props: {
+      stringEllipse: false
+    },
     getData: () => {
       const originSource = `<!DOCTYPE html>
       <html lang="en">
