@@ -2,9 +2,29 @@ import json from './big-size.json';
 
 export const data = [
   {
-    type: 'Primitive source',
+    type: 'Primitive string',
     getData: () => {
       const originSource = 'Hello, @huolala-tech/react-json-view';
+      return {
+        originSource,
+        renderSource: originSource
+      };
+    }
+  },
+  {
+    type: 'Number string',
+    getData: () => {
+      const originSource = '1234567890';
+      return {
+        originSource,
+        renderSource: originSource
+      };
+    }
+  },
+  {
+    type: 'Number value',
+    getData: () => {
+      const originSource = 1234567890;
       return {
         originSource,
         renderSource: originSource
@@ -53,6 +73,16 @@ export const data = [
       const originSource = null;
       return {
         originSource: JSON.stringify(originSource),
+        renderSource: originSource
+      };
+    }
+  },
+  {
+    type: 'Undefined',
+    getData: () => {
+      const originSource = undefined;
+      return {
+        originSource: 'undefined',
         renderSource: originSource
       };
     }

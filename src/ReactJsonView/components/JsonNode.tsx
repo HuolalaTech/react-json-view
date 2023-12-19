@@ -5,6 +5,7 @@ import {
   isBoolean,
   isListOrMap,
   isNumber,
+  isString,
   shortTitle
 } from '../../utils';
 import { ArrowRight } from './SvgIcon';
@@ -25,8 +26,27 @@ const PrimitiveContent = ({ content }: { content: React.ReactNode }) => {
   return React.createElement(Fragment, null, computedContent);
 };
 
+const computePrimitiveDataClassname = (data: unknown) => {
+  if (data === null) return 'null';
+
+  const type = typeof data;
+  const primitiveType = ['number', 'boolean'];
+  if (primitiveType.indexOf(type) > -1) {
+    return type;
+  }
+  if (isString(data)) {
+    try {
+      const dataMaybeObject = JSON.parse(data);
+      return isListOrMap(dataMaybeObject) ? '' : 'string';
+    } catch (e) {
+      return 'string';
+    }
+  }
+  return '';
+};
+
 const JsonNode = ({
-  source = null,
+  source,
   depth = 1,
   label = ''
 }: {
@@ -49,6 +69,7 @@ const JsonNode = ({
 
   let data: unknown;
   try {
+    // Exclude the invalid data
     data = JSON.parse(JSON.stringify(source));
   } catch (e) {
     label = 'Error';
@@ -62,15 +83,9 @@ const JsonNode = ({
     return null;
   }, [label]);
 
-  let className = '';
-  const type = typeof data;
-  const primitiveType = ['string', 'number', 'boolean'];
-  if (primitiveType.indexOf(type) > -1) {
-    className = type;
-  } else if (data === null) {
-    className = 'null';
-  }
-  if (className) {
+  const primitiveClassname = computePrimitiveDataClassname(data);
+
+  if (primitiveClassname) {
     return (
       <code className="rjv-primitive">
         {labelContent && (
@@ -81,12 +96,16 @@ const JsonNode = ({
             {labelContent}
           </>
         )}
-        <span className={clsx('rjv-primitive-type', className)}>
+        <span className={clsx('rjv-primitive-type', primitiveClassname)}>
           <PrimitiveContent content={`${data}`} />
         </span>
         {copyable && <Copyable data={JSON.stringify(data, null, 2)} />}
       </code>
     );
+  }
+
+  if (isString(data)) {
+    data = JSON.parse(data);
   }
 
   if (isListOrMap(data)) {
