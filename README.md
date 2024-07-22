@@ -84,4 +84,4 @@ The default configuration usage:
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](./LICENSE)

@@ -9,7 +9,7 @@ export const ArrowRight = (props: SVGAttributes<Element>) => (
       viewBox="0 0 24 24"
       {...props}
     >
-      <path d="M 0 0 l 16 12 L 0 24 z" fill="#999" />
+      <path d="M 0 0 l 16 12 L 0 24 z" fill="currentColor" />
     </svg>
   </span>
 );
@@ -25,7 +25,7 @@ export const TextCopy = (props: SVGAttributes<Element>) => (
     >
       <path
         fill="none"
-        stroke="#9a9a9a"
+        stroke="currentColor"
         strokeWidth="2"
         d="M9 15h8h-8Zm0-4h10H9Zm0-4h4h-4Zm7-6v6h6M6 5H2v18h16v-4m4 0H6V1h11l5 5v13Z"
       />
